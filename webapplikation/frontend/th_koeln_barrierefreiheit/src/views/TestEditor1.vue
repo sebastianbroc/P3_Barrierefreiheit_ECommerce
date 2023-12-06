@@ -32,6 +32,18 @@
       <!--<p v-if="webSocketActive" style="color: green;">Web-Socket Verbindung aktiv</p>-->
       <!--<p v-if="!webSocketActive" style="color: red;">Web-Socket Verbindung inaktiv</p>-->
     </div>
+    <div id="imageModal" v-if="imageToAdd">
+      <div id="modalContent">
+        <h1>Bild einfügen</h1>
+        <img :src="imageToAdd">
+        <div style="display: flex; width: 100%; justify-content: start; gap: 10px; margin-top: 10px;">
+          <input type="text" id="alt-text" v-model="imageAltText"><label for="alt-text">Alt-Text</label>
+        </div>
+        <div style="display: flex; width: 100%; justify-content: start; gap: 10px; margin-top: 10px;">
+          <button class="submitAltText cancel" @click="cancelImage">Abbrechen</button> <button class="submitAltText" @click="submitImage">Hinzufügen</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -53,6 +65,8 @@ export default {
   data() {
     return {
       existingGuideline: (!this.$route.query.new && this.$route.query.g) ? true : false,
+      imageAltText: null,
+      imageToAdd: null,
       navLinks: [
         {
           link: "/menu",
@@ -78,11 +92,17 @@ export default {
           hideSpeedMs: 0,
           selectionChangeSource: null,
           transformOnTextChange: true
-        },
+        }
       ],
       editorSettings: {
         modules: {
-          multiCursor: true
+          multiCursor: true,
+          toolbar: {
+            container: [['image']],
+            handlers: {
+              image: this.imageHandler
+            }
+          }
         }
       }
     }
@@ -95,6 +115,36 @@ export default {
     }
   },
   methods: {
+    imageHandler() {
+      let input = document.createElement('input');
+      input.type = 'file';
+      input.onchange = () => {
+        // you can use this method to get file and perform respective operations
+        let files =   Array.from(input.files);
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          console.log(reader.result);
+          this.imageToAdd = reader.result;
+        };
+        reader.readAsDataURL(files[0]);
+
+      };
+      input.click();
+    },
+    submitImage(){
+      if(!this.imageAltText){
+        alert("Du musst einen Alt-Text angeben!")
+      } else {
+        let range = this.$refs.editor.quill.getSelection() ? this.$refs.editor.quill.getSelection() : this.$refs.editor.quill
+        let value = this.imageToAdd;
+        this.$refs.editor.quill.insertEmbed(range.index, 'image', value);
+        this.imageToAdd = null;
+      }
+    },
+    cancelImage(){
+      this.imageToAdd = null;
+    },
     async getGuideline(){
       let data = {
         "guideline_id": this.$route.query.g
@@ -276,6 +326,53 @@ export default {
 
 #guidelineTitle:focus, #guidelineAuthor:focus {
   outline: none !important;
+}
+
+#imageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+
+  #modalContent {
+    background: white;
+    padding: 20px;
+    margin-left: 25%;
+    margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+  }
+}
+
+input[type='text'] {
+  border: solid 1px $mi-grau;
+  margin-bottom: $bfs;
+  font-family: "PT Sans", sans-serif;
+  font-size: $bfs-s;
+  padding: 2px;
+}
+
+label {
+  white-space: nowrap;
+}
+
+.submitAltText {
+  cursor: pointer;
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: bold;
+  background: $mi-lila;
+  color: $mi-hellgrau;
+  padding: $xs;
+  align-items: center;
+  width: 30%;
+  max-width: 100px;
+
+  &.cancel {
+    background: $mi-pink;
+  }
 }
 
 </style>
