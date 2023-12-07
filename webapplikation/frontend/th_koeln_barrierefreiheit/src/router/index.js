@@ -8,6 +8,7 @@ import MenuView from "../views/MenuView.vue";
 import TextEditor from "../views/TextEditor.vue";
 import UserGuidelineOverview from "../views/UserGuidelineOverview.vue";
 import TestEditor1 from "../views/TestEditor1.vue";
+import TestEditor2 from "../views/TestEditor2.vue";
 
 const routes = [
   {
@@ -49,6 +50,11 @@ const routes = [
     path: '/testeditor1',
     name: 'testeditor1',
     component: TestEditor1
+  },
+  {
+    path: '/testeditor2',
+    name: 'testeditor2',
+    component: TestEditor2
   },
   {
     path: '/yourguidelines',

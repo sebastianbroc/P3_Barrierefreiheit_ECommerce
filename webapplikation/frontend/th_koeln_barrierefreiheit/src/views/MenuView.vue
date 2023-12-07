@@ -13,15 +13,15 @@
         </router-link>
         <router-link to="/testeditor2" class="section" id="testeditor2">
           <h3>Test-Editor 2</h3>
-          <p>Lorem Ipsum Dolor</p>
+          <p>Format-Check mit Badge</p>
         </router-link>
         <router-link to="/testeditor3" class="section" id="testeditor3">
           <h3>Test-Editor 3</h3>
-          <p>Lorem Ipsum Dolor</p>
+          <p>KI generiert Alt-Text</p>
         </router-link>
         <router-link to="/testeditor4" class="section" id="testeditor4">
           <h3>Test-Editor 4</h3>
-          <p>Lorem Ipsum Dolor</p>
+          <p>KI-Text mit Nutzerbestätigung</p>
         </router-link>
       </div>
     </div>
