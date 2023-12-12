@@ -78,5 +78,17 @@ export default {
         return axios
             .post(url + 'voteAnnotation/', data)
             .then(response => response.data)
+    },
+    generateAIAltText(data){
+        let config = {
+            headers: {
+                "X-API-Key": "PUT_API_KEY_HERE",
+                "Content-type": "application/json"
+            }
+        }
+
+        return axios
+            .post("https://alttext.ai/api/v1/images", data, config)
+            .then(response => response.data)
     }
 };

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import GuidelineOverview from "../views/GuidelineOverview.vue";
@@ -9,6 +9,7 @@ import TextEditor from "../views/TextEditor.vue";
 import UserGuidelineOverview from "../views/UserGuidelineOverview.vue";
 import TestEditor1 from "../views/TestEditor1.vue";
 import TestEditor2 from "../views/TestEditor2.vue";
+import TestEditor3 from "../views/TestEditor3.vue";
 
 const routes = [
   {
@@ -57,6 +58,11 @@ const routes = [
     component: TestEditor2
   },
   {
+    path: '/testeditor3',
+    name: 'testeditor3',
+    component: TestEditor3
+  },
+  {
     path: '/yourguidelines',
     name: 'yourguidelines',
     component: UserGuidelineOverview
@@ -64,7 +70,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory("/"),
+  history: createWebHashHistory("/"),
   routes
 })
 

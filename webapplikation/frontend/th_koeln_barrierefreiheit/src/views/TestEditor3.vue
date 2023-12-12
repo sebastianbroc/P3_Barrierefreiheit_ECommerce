@@ -4,8 +4,10 @@
     <div class="editor content has-gap">
       <div class="header flex">
         <input type="text" name="guidelineTitle" v-model="guidelineTitle" placeholder="Titel..." id="guidelineTitle">
-        <div class="actions">
-          <img src="@/assets/images/save.svg" alt="Speichern"  id="saveButton" @click="save">
+        <div class="actions_wrapper">
+          <div class="actions">
+            <img src="@/assets/images/save.svg" alt="Speichern"  id="saveButton" @click="save">
+          </div>
         </div>
       </div>
       <!--<input type="text" v-model="position" @change="changeCursorPosition">-->
@@ -23,9 +25,9 @@
     <div id="imageModal" v-if="imageToAdd">
       <div id="modalContent">
         <h1>Bild einfügen</h1>
-        <img :src="imageToAdd" style="max-height: 50vh; width: 100%;">
+        <img :src="imageToAdd">
         <div style="display: flex; width: 100%; justify-content: start; gap: 10px; margin-top: 10px;">
-          <input type="text" id="alt-text" v-model="imageAltText"><label for="alt-text">Alt-Text</label>
+          <input type="text" id="alt-text" v-model="imageAltText" style="width: 70%;"><label for="alt-text">Alt-Text</label>
         </div>
         <div style="display: flex; width: 100%; justify-content: start; gap: 10px; margin-top: 10px;">
           <button class="submitAltText cancel" @click="cancelImage">Abbrechen</button> <button class="submitAltText" @click="submitImage">Hinzufügen</button>
@@ -101,32 +103,58 @@ export default {
     }
   },
   methods: {
+    checkForAltText(){
+      //this returns true if every image in the guideline also has an alt text
+      return this.occurrences(this.editorContent, "<img src", false) === 0 || this.occurrences(this.editorContent, "<img src", false) === this.occurrences(this.editorContent, ";alt&gt", false)
+    },
+    occurrences(string, subString, allowOverlapping) {
+
+      string += "";
+      subString += "";
+      if (subString.length <= 0) return (string.length + 1);
+
+      var n = 0,
+          pos = 0,
+          step = allowOverlapping ? 1 : subString.length;
+
+      while (string) {
+        pos = string.indexOf(subString, pos);
+        if (pos >= 0) {
+          ++n;
+          pos += step;
+        } else break;
+      }
+      return n;
+    },
     imageHandler() {
       let input = document.createElement('input');
       input.type = 'file';
       input.onchange = () => {
-        // you can use this method to get file and perform respective operations
-        let files =   Array.from(input.files);
-
+        let files = Array.from(input.files);
         const reader = new FileReader();
         reader.onloadend = () => {
-          console.log(reader.result);
-          this.imageToAdd = reader.result;
+          //TODO: AI API CALL
+          AuthService.generateAIAltText({
+            "lang":"de",
+            "image": {
+              "raw": reader.result.substring(23)
+            }
+          }).then((result) => {
+            console.log(result)
+            this.imageAltText = result.alt_text;
+            this.imageToAdd = reader.result;
+          })
         };
         reader.readAsDataURL(files[0]);
-
       };
       input.click();
     },
     submitImage(){
-      if(!this.imageAltText){
-        alert("Du musst einen Alt-Text angeben!")
-      } else {
-        let value = this.imageToAdd;
-        this.$refs.editor.quill.insertEmbed(-1, 'image', value);
-        this.$refs.editor.quill.insertText(-1, "<alt>" + this.imageAltText + "</alt>")
-        this.imageToAdd = null;
-      }
+      let value = this.imageToAdd;
+      this.$refs.editor.quill.insertEmbed(-1, 'image', value);
+      if(this.imageAltText)this.$refs.editor.quill.insertText(-1, "<alt>" + this.imageAltText + "</alt>")
+      this.imageToAdd = null
+      this.imageAltText = null
     },
     cancelImage(){
       this.imageToAdd = null;
@@ -178,6 +206,44 @@ export default {
 
 .header{
   margin-bottom: $bfs-l;
+}
+
+.actions_wrapper {
+  display: flex;
+  align-items: center;
+  gap: $bfs;
+
+  img {
+    padding: 0;
+    height: 30px;
+    filter: invert(22%) sepia(83%) saturate(7122%) hue-rotate(279deg) brightness(84%) contrast(102%);;
+  }
+
+  .accessibility_badge {
+    background: transparent;
+    border: solid 2px $mi-lila;
+    display: flex;
+    align-items: center;
+    color: white;
+    border-radius: 30px;
+    padding: 4px;
+    height: min-content;
+
+    p {
+      margin: 0;
+      padding-right: 2px;
+      font-size: $bfs-xs;
+      color: $mi-lila;
+    }
+
+    &.inaccessible {
+      border: none;
+
+      p {
+        color: $mi-pink;
+      }
+    }
+  }
 }
 
 .actions {
