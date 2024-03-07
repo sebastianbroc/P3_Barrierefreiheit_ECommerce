@@ -1,5 +1,11 @@
-# P3_Barrierefreiheit_ECommerce
-In diesem Branch wird eine Version des Frontends entwickelt, welche prototypisch Ansätze zur Erhöhung der Barrierefreiheit einbindet.
-Diese Version kann somit Testnutzern an die Hand gegeben werden, um die verschiedenen Ansätze zu bewerten.
+# Barrierefreiheit im ECommerce - Projekt 3
+In diesem Repository wird der Code der Barrierefreiheits-Plattform in der P3-Phase verwaltet - da es in dieser Projektphase vor allem um die Evaluation des bestehenden Codes und Tests von neuen Features geht, werden neue Features in eigenen Branches entwickelt und bei Abschluss schließlich in den main-Branch gemerged. 
 
-<img width="1181" alt="Bildschirmfoto 2023-12-06 um 21 33 09" src="https://github.com/sebastianbroc/P3_Barrierefreiheit_ECommerce/assets/63352229/01e87c6a-4205-40b4-b580-40ee2e0a77a6">
+Die neuentwickelten Features beinhalten:
+
+* Integration verschiedener Test-Editoren zur Erhöhung der Nutzermotivation, Alt-Texte anzugeben. Diese beinhalten zB auch die Generierung von Alt-Texten durch KI (alttext.ai). Die Ergebnisse wurden in einem Paper im Rahmen des Vertiefungsworkshops B (Wissenschaftliche Verwertung) diskutiert.
+* Keycloak-Integration zur einfachen Anmeldung via GM-ID
+* Frontend-Component-Library zum Austausch von Code für garantiert barrierefreie Komponenten
+* Kollaborativer Live-Editor zur Arbeit mit mehreren Autoren an einer Guideline
+
+## Roadmap
