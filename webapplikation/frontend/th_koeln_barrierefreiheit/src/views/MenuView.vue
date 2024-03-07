@@ -19,10 +19,6 @@
           <h3>Test-Editor 3</h3>
           <p>KI generiert Alt-Text</p>
         </router-link>
-        <router-link to="/testeditor4" class="section" id="testeditor4">
-          <h3>Test-Editor 4</h3>
-          <p>KI-Text mit Nutzerbestätigung</p>
-        </router-link>
       </div>
     </div>
   </div>

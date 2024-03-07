@@ -133,7 +133,7 @@ export default {
         let files = Array.from(input.files);
         const reader = new FileReader();
         reader.onloadend = () => {
-          //TODO: AI API CALL
+          //AI API CALL HAPPENING HERE
           AuthService.generateAIAltText({
             "lang":"de",
             "image": {
