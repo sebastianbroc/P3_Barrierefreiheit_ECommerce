@@ -3,9 +3,13 @@
     <NavHeader :links=this.navLinks />
     <div class="content has-gap">
       <div class="sections">
-        <router-link to="/guidelines" class="section" id="guidelines">
+        <router-link to="/guidelines" class="section half-width" id="guidelines">
           <h3>Guidelines</h3>
           <p>Hier kannst du auf die Guidelines zugreifen und dein Wissen erweitern!</p>
+        </router-link>
+        <router-link to="/components" class="section half-width" id="components">
+          <h3>Component-Library</h3>
+          <p>Greife auf garantiert Barrierefreie Frontend-Komponenten für deine eigenen Projekte zu!</p>
         </router-link>
         <router-link to="/testeditor1" class="section" id="testeditor1">
           <h3>Test-Editor 1</h3>
@@ -75,8 +79,11 @@ export default {
     &#guidelines {
       background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/guideline_teaser.jpg');
     }
-    &#testeditor1, &#testeditor2, &#testeditor3, &#testeditor4 {
+    &#components {
       background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/components_teaser.jpg');
+    }
+    &#testeditor1, &#testeditor2, &#testeditor3, &#testeditor4 {
+      background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/editor_teaser.jpg');
       grid-column: auto / span 1;
     }
     &#editor {
@@ -84,6 +91,9 @@ export default {
     }
     &#user {
       background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/profile_teaser.jpg');
+    }
+    &.half-width {
+      grid-column: auto / span 2;
     }
 
     &#user, &#editor {
