@@ -4,7 +4,7 @@
     <div class="content has-gap">
       <div class="loading" v-if="!components || components.length == 0"></div>
       <div class="component_list" v-if="components && components.length > 0">
-        <router-link :to="'/component?g=' + component.component_id" class="component" v-for="component in components" :key="component.component_id" :value="component.component_id">
+        <router-link :to="'/component?c=' + component.component_id" class="component" v-for="component in components" :key="component.component_id" :value="component.component_id">
           <div class="top_row">
             <div>
               <h2>{{component.title}}</h2>
@@ -33,8 +33,8 @@ export default {
     return {
       navLinks: [
         {
-          link: "/guidelines",
-          name: "guidelines"
+          link: "/components",
+          name: "components"
         }
       ],
       components: []

@@ -21,7 +21,6 @@ import AuthService from "@/services/AuthService";
 import { VueLive } from "vue-live";
 import "vue-live/style.css";
 import "prismjs/themes/prism.min.css";
-import hljs from "highlight.js";
 import 'highlight.js/styles/a11y-dark.css';
 import NavHeader from "@/components/navHeader.vue";
 
@@ -30,7 +29,8 @@ export default {
   components: {NavHeader, VueLive},
   data(){
     return {
-      component: {
+      component: null,
+      test_component: {
         "component_id": 1,
         "author_id": 7,
         "author_name": "Jennifer Schirrmann",
@@ -348,13 +348,14 @@ export default {
   created(){
   },
   async mounted() {
-    let components = await AuthService.getAllComponents()
-    console.log(components)
+    let result = await AuthService.getComponent({"component_id": this.$route.query.c})
+    this.component = result.msg.map(item => {return {...item, "author_name": item.name}})[0]
+    console.log(this.component)
+    this.$forceUpdate
   },
   methods: {
   },
   updated(){
-    hljs.highlightAll()
   }
 }
 </script>

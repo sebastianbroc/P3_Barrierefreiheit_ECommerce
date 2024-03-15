@@ -95,5 +95,10 @@ export default {
         return axios
             .get(url + 'getComponents/')
             .then(response => response.data)
+    },
+    getComponent(data){
+        return axios
+            .post(url + 'getComponent/', data)
+            .then(response => response.data)
     }
 };
