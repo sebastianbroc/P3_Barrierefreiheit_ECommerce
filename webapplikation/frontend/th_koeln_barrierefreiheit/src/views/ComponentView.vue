@@ -4,8 +4,14 @@
     <div class="content has-gap">
       <div class="loading" v-if="!component"></div>
       <div class="component" v-if="component">
-        <h1 class="title">{{component.title}}</h1>
-        <h2 class="author">von <router-link :to="'/user?u=' + component.author_id">{{component.author_name}}</router-link></h2>
+        <div class="header">
+          <div>
+            <h1 class="title">{{component.title}}</h1>
+            <h2 class="author">von <router-link :to="'/user?u=' + component.author_id">{{component.author_name}}</router-link></h2>
+            <h3 class="code_lang">{{component.language}}</h3>
+          </div>
+          <button id="edit_component_button" @click="redirectToEdit" v-if="component.author_id === $store.getters.getUser.id"><img src="@/assets/images/edit.svg" alt="Diese Komponente bearbeiten" id="editButton"></button>
+        </div>
         <VueLive
             :code=component.code
             :editor-props="{lineNumbers: true}"
@@ -354,6 +360,9 @@ export default {
     this.$forceUpdate
   },
   methods: {
+    redirectToEdit(){
+      this.$router.push('/editcomponent?c=' + this.$route.query.c)
+    }
   },
   updated(){
   }
@@ -376,6 +385,37 @@ export default {
   .author {
     font-size: $bfs;
     margin-bottom: $l;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .code_lang {
+      background: rgba(147,19,206,0.3);
+      border: dashed 1px $mi-lila;
+      border-radius: 10px;
+      padding: 4px;
+      width: fit-content;
+      font-size: $bfs-s;
+    }
+  }
+
+  #edit_component_button {
+    background: $mi-lila;
+    border-radius: 5px;
+    height: 50px;
+    cursor: pointer;
+
+    img {
+      filter: invert(100%);
+    }
+
+    #saveButton {
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 </style>

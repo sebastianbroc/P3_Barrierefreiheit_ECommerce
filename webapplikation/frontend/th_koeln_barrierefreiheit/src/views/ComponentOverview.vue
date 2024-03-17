@@ -2,6 +2,9 @@
   <div class="components">
     <NavHeader :links=this.navLinks />
     <div class="content has-gap">
+      <div class="button_wrapper">
+        <button id="add_component_button" @click="$router.push('/editcomponent')" v-if="$store.getters.getUser.is_expert"><img src="@/assets/images/edit.svg" alt="Neue Komponente hinzufügen" id="addComponent"></button>
+      </div>
       <div class="loading" v-if="!components || components.length == 0"></div>
       <div class="component_list" v-if="components && components.length > 0">
         <router-link :to="'/component?c=' + component.component_id" class="component" v-for="component in components" :key="component.component_id" :value="component.component_id">
@@ -52,6 +55,24 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.button_wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: $bfs;
+
+  #add_component_button {
+    background: $mi-lila;
+    border-radius: 5px;
+    height: 50px;
+    cursor: pointer;
+
+    img {
+      filter: invert(100%);
+    }
+  }
+}
+
 .content {
   margin-top: 50px;
   height: 70%;

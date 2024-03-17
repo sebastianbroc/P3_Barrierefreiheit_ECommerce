@@ -100,5 +100,10 @@ export default {
         return axios
             .post(url + 'getComponent/', data)
             .then(response => response.data)
+    },
+    saveComponent(data){
+        return axios
+            .post(url + 'saveComponent/', data)
+            .then(response => response.data)
     }
 };
