@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /dist
+/webapplikation/frontend/th_koeln_barrierefreiheit/dist
 
 
 # local env files

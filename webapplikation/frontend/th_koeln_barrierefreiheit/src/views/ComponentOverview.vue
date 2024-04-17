@@ -17,10 +17,12 @@
               <span class="code_language">{{component.language}}</span>
             </div>
           </div>
-          <VueLivePreview :code="component.code"/>
+          <div id="component_preview">
+            <VueLivePreview :code="component.code"/>
+          </div>
         </router-link>
       </div>
-  </div>
+    </div>
   </div>
 </template>
 
@@ -114,6 +116,11 @@ a:hover {
   padding: $s;
   transition: ease 0.2s;
   max-height: 200px;
+
+  #component_preview {
+    max-width: 50%;
+    overflow: scroll;
+  }
 
   &:hover {
     transform: scale(105%);
