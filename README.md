@@ -8,9 +8,11 @@ Die neuentwickelten Features beinhalten:
 * Frontend-Component-Library zum Austausch von Code für garantiert barrierefreie Komponenten
 * Kollaborativer Live-Editor zur Arbeit mit mehreren Autoren an einer Guideline
 
-## Live-System
-Das System ist hier zu erreichen: <a href="http://mivs01.gm.fh-koeln.de/">http://mivs01.gm.fh-koeln.de/</a>
+## Deployments
+Das Live-System ist hier zu erreichen: <a href="http://mivs01.gm.fh-koeln.de/">mivs01.gm.fh-koeln.de</a>
 (Nur über TH-VPN erreichbar)
+
+Die Version des Frontends, welche für Nutzertests im Vertiefungsworkshop B genutzt wurde, um anhand von verschiedenen Mechanismen in Test-Editoren die Bereitschaft, Alt-Texte zu Bildinhalten zu verfassen, zu erhöhen, ist via GitHub Pages verfügbar: <a href="https://sebastianbroc.github.io/P3_Barrierefreiheit_ECommerce/">sebastianbroc.github.io/P3_Barrierefreiheit_ECommerce</a>
 
 ## Roadmap
 ![P2_Barrierefreiheit - P3 Roadmap](https://github.com/sebastianbroc/P3_Barrierefreiheit_ECommerce/assets/63352229/7280fd50-9970-48be-9457-c1f6ef757d3a)
