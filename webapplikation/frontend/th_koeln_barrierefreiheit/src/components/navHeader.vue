@@ -1,7 +1,7 @@
 <template>
   <div class="m-navHead">
     <div class="left-wrapper">
-      <button id="icon-main-menu" class="m-navHead--hamburger" aria-label="Menu Button">
+      <button id="icon-main-menu" class="m-navHead--hamburger hide_on_small_vp" aria-label="Menu Button">
         <svg id="menu-button-wrap" width="100%" height="100%" viewBox="0 0 225 175" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" alt="burger menu button" name="burger menu button">
           <g id="menu-button" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" alt="burger menu button" name="burger menu button">
             <rect id="balken-1" fill="#9313CE" x="25" y="25" width="175" height="25"></rect>
@@ -11,6 +11,7 @@
         </svg>
       </button>
       <div class="m-navHead--text">
+        <a @click="$router.go(-1)"><img src="@/assets/images/arrow.svg" id="navHeaderBackButton" class="hide_on_large_vp" alt="Back Button"></a>
         <router-link :to="'/'" class="hide_on_small_vp">mi&nbsp;</router-link>
         <span class="m-navHead--logoSlash" v-for="link in this.links" :key="link.link" :value="link.link">/</span>
         <span class="m-navHead--logoSlug" v-for="link in this.links" :key="link.link" :value="link.link">
@@ -62,6 +63,12 @@ export default {
   align-items: center;
 }
 
+#navHeaderBackButton {
+  margin-left: $bfs-xs;
+  transform: rotate(180deg);
+  filter: invert(22%) sepia(83%) saturate(7122%) hue-rotate(279deg) brightness(84%) contrast(102%);;
+}
+
 .user {
   text-align: right;
   margin-right: 1rem;
@@ -85,11 +92,17 @@ export default {
 
 @media screen and (max-width: 500px) {
   .hide_on_small_vp {
-    display: none;
+    display: none !important;
   }
 
   .m-navHead--logoSlug {
     font-size: $bfs-xl;
+  }
+}
+
+@media screen and (min-width: 501px) {
+  .hide_on_large_vp {
+    display: none !important;
   }
 }
 </style>

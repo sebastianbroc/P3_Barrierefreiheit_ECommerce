@@ -161,7 +161,7 @@ a:hover {
     grid-template-columns: 1fr;
 
     .component {
-      max-width: 37vw;
+      max-width: 87vw;
       padding: $bfs-xxs;
 
       .top_row {

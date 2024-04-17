@@ -3,25 +3,21 @@
     <NavHeader :links=this.navLinks />
     <div class="content has-gap">
       <div class="sections">
-        <router-link to="/guidelines" class="section half-width" id="guidelines">
+        <router-link to="/guidelines" class="section" id="guidelines">
           <h3>Guidelines</h3>
           <p>Hier kannst du auf die Guidelines zugreifen und dein Wissen erweitern!</p>
         </router-link>
-        <router-link to="/components" class="section half-width" id="components">
-          <h3>Component-Library</h3>
-          <p>Greife auf garantiert Barrierefreie Frontend-Komponenten für deine eigenen Projekte zu!</p>
+        <router-link to="/components" class="section" id="components">
+          <h3>Komponenten</h3>
+          <p>Erhalte Zugriff auf eine breit gefächerte Bibliothek aus vorgefertigten Frontend-Komponenten, welche Barrierefreiheits-Richtlinien garantiert erfüllen!</p>
         </router-link>
-        <router-link to="/testeditor1" class="section" id="testeditor1">
-          <h3>Test-Editor 1</h3>
-          <p>Erzwingt Alt-Text</p>
+        <router-link to="/yourguidelines" class="section" id="editor">
+          <h3>Editor</h3>
+          <p>Verfasse eine Guideline und teile neues Wissen mit der Welt.</p>
         </router-link>
-        <router-link to="/testeditor2" class="section" id="testeditor2">
-          <h3>Test-Editor 2</h3>
-          <p>Format-Check mit Badge</p>
-        </router-link>
-        <router-link to="/testeditor3" class="section" id="testeditor3">
-          <h3>Test-Editor 3</h3>
-          <p>KI generiert Alt-Text</p>
+        <router-link :to="'/user?u='+ this.$store.getters.getUser.id" class="section" id="user" v-if="this.$store.getters.isLoggedIn && this.$store.getters.getUser">
+          <h3>Profil</h3>
+          <p>Passe deine Daten an.</p>
         </router-link>
       </div>
     </div>
@@ -60,7 +56,7 @@ export default {
 
 .sections {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: $bfs-l;
   width: 80vw;
   padding-bottom: 100px;
@@ -74,7 +70,7 @@ export default {
     overflow: hidden;
     background-size: cover !important;
     background-position: center !important;
-    grid-column: auto / span 4;
+    grid-column: auto / span 2;
 
     &#guidelines {
       background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/guideline_teaser.jpg');
@@ -82,18 +78,11 @@ export default {
     &#components {
       background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/components_teaser.jpg');
     }
-    &#testeditor1, &#testeditor2, &#testeditor3, &#testeditor4 {
-      background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/editor_teaser.jpg');
-      grid-column: auto / span 1;
-    }
     &#editor {
       background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/editor_teaser.jpg');
     }
     &#user {
       background: linear-gradient(to top, rgba(147,19,206,0.5), rgba(0,0,0,1)), url('@/assets/images/section_teaser/profile_teaser.jpg');
-    }
-    &.half-width {
-      grid-column: auto / span 2;
     }
 
     &#user, &#editor {

@@ -377,6 +377,8 @@ export default {
 }
 
 .component {
+  padding-bottom: $bfs-xxl;
+
   .title {
     color: $mi-lila;
     margin-bottom: $xs / 2;
@@ -435,5 +437,21 @@ export default {
 .VueLive-editor, .VueLivePreview {
   /*border: solid 2px $mi-grau;*/
   border-radius: 5px;
+}
+
+@media screen and (max-width: 640px) {
+  .VueLive-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .VueLive-editor {
+    width: 90vw !important;
+  }
+
+  .VueLivePreview {
+    margin-top: $bfs-xl;
+    width: 90vw !important;
+  }
 }
 </style>

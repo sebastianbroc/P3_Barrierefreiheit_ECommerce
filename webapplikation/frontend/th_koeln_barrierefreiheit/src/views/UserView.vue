@@ -6,7 +6,7 @@
         <div class="bio_wrapper">
           <img v-if="user.image" :src="user.image">
           <div class="bio">
-            <div style="display: flex; align-items: center; gap: 20px;"><h1>{{user.name}}</h1><span v-if="user.is_expert" class="verified_badge"><img src="@/assets/images/checkmark.png">Experte</span><img src="@/assets/images/edit.svg" alt="Profil bearbeiten" v-if="this.$store.getters.isLoggedIn && this.$route.query.u == this.$store.getters.getUser.id" @click="this.toggleEditView" id="editButton"></div>
+            <div class="bio_top"><h1>{{user.name}}</h1><span v-if="user.is_expert" class="verified_badge"><img src="@/assets/images/checkmark.png">Experte</span><img src="@/assets/images/edit.svg" alt="Profil bearbeiten" v-if="this.$store.getters.isLoggedIn && this.$route.query.u == this.$store.getters.getUser.id" @click="this.toggleEditView" id="editButton"></div>
             <p>{{user.bio}}</p>
             <h2>Mitglied seit {{user.registered}}</h2>
           </div>
@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="expert_qualification" v-if="user.is_expert">
-            <h1>Expertenqualifikation</h1>
+            <h1>Qualifikation</h1>
             <p>{{user.qualification}}</p>
           </div>
         </div>
@@ -60,8 +60,8 @@ export default {
       editView: false,
       navLinks: [
         {
-          link: "/guidelines",
-          name: "guidelines"
+          link: "/menu",
+          name: "profil"
         }
       ],
       user: null,
@@ -167,6 +167,12 @@ export default {
     display: flex;
     flex-direction: column;
     gap: $bfs-xs;
+
+    .bio_top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
     #editButton, #saveButton, #cancelButton {
       width: 30px;
@@ -325,6 +331,26 @@ export default {
     }
   }
 
+}
+@media screen and (max-width: 500px) {
+  .bio_top {
+    flex-direction: column;
+    gap: 0;
+    justify-content: flex-start;
+    align-items: baseline !important;
+  }
+
+  .bio_wrapper {
+    gap: $bfs-xs !important;
+  }
+
+  .contributions {
+    .posts {
+      .post {
+        flex-direction: column;
+      }
+    }
+  }
 }
 
 </style>

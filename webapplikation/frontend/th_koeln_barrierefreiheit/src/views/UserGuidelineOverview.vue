@@ -48,7 +48,7 @@ export default {
       navLinks: [
         {
           link: "/guidelines",
-          name: "deine guidelines"
+          name: "editor"
         }
       ],
       guidelines: []
