@@ -8,6 +8,8 @@ Die neuentwickelten Features beinhalten:
 * Frontend-Component-Library zum Austausch von Code für garantiert barrierefreie Komponenten
 * Kollaborativer Live-Editor zur Arbeit mit mehreren Autoren an einer Guideline
 
+Alle Neuerungen und Forschungen aus der P3-Phase sind im <a href="https://github.com/sebastianbroc/P3_Barrierefreiheit_ECommerce/wiki">Wiki dieses Repositorys</a> sowie im entsprechenden Ordner <a href="https://github.com/sebastianbroc/P3_Barrierefreiheit_ECommerce/tree/main/dokumentation">"dokumentation"</a> dokumentiert.
+
 ## Deployments
 Das Live-System ist hier zu erreichen: <a href="http://mivs01.gm.fh-koeln.de/">mivs01.gm.fh-koeln.de</a>
 (Nur über TH-VPN erreichbar)
