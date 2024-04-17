@@ -10,6 +10,9 @@ import UserGuidelineOverview from "../views/UserGuidelineOverview.vue";
 import TestEditor1 from "../views/TestEditor1.vue";
 import TestEditor2 from "../views/TestEditor2.vue";
 import TestEditor3 from "../views/TestEditor3.vue";
+import ComponentView from "../views/ComponentView.vue";
+import ComponentOverview from "../views/ComponentOverview.vue";
+import ComponentEditor from "../views/ComponentEditor.vue";
 
 const routes = [
   {
@@ -66,6 +69,21 @@ const routes = [
     path: '/yourguidelines',
     name: 'yourguidelines',
     component: UserGuidelineOverview
+  },
+  {
+    path: '/components',
+    name: 'components',
+    component: ComponentOverview
+  },
+  {
+    path: '/component',
+    name: 'component',
+    component: ComponentView
+  },
+  {
+    path: '/editcomponent',
+    name: 'editcomponent',
+    component: ComponentEditor
   }
 ]
 

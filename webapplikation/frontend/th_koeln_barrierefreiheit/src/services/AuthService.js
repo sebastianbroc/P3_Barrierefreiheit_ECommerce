@@ -90,5 +90,20 @@ export default {
         return axios
             .post("https://alttext.ai/api/v1/images", data, config)
             .then(response => response.data)
+    },
+    getAllComponents(){
+        return axios
+            .get(url + 'getComponents/')
+            .then(response => response.data)
+    },
+    getComponent(data){
+        return axios
+            .post(url + 'getComponent/', data)
+            .then(response => response.data)
+    },
+    saveComponent(data){
+        return axios
+            .post(url + 'saveComponent/', data)
+            .then(response => response.data)
     }
 };
