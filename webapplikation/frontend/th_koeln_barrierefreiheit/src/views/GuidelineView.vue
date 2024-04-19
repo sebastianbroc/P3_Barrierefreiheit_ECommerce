@@ -12,8 +12,8 @@
         <p v-html="guideline.bibliography"></p>
       </div>
       <p id="last_update" class="unselectable">letzte Aktualisierung: {{guideline.last_update}}</p>
-      <button id="add_annotation_button" @click="toggleAddAnnotation" v-if="!addAnnotation"><img src="@/assets/images/edit.svg" alt="Diese Guideline bearbeiten" v-if="this.$store.getters.isLoggedIn && !addAnnotation" id="editButton">Annotation verfassen</button>
-      <button id="add_annotation_button" class="active" @click="toggleAddAnnotation" v-if="addAnnotation">Jetzt Textstelle mit Cursor markieren!</button>
+      <button id="add_annotation_button" @click="toggleAddAnnotation" v-if="!addAnnotation && this.$store.getters.isLoggedIn"><img src="@/assets/images/edit.svg" alt="Diese Guideline bearbeiten" v-if="!addAnnotation" id="editButton">Annotation verfassen</button>
+      <button id="add_annotation_button" class="active" @click="toggleAddAnnotation" v-if="addAnnotation && this.$store.getters.isLoggedIn">Jetzt Textstelle mit Cursor markieren!</button>
       <div class="approvements unselectable">
         <h3 v-if="guideline.approvements && guideline.approvements.length > 0">durch <b>{{guideline.approvements.length}}</b> Experten bestätigt</h3>
         <h3 v-if="guideline.approvements && guideline.approvements.length < 1">noch nicht bestätigt</h3>
