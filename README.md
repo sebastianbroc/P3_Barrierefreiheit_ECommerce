@@ -6,7 +6,6 @@ Die neuentwickelten Features beinhalten:
 * Integration verschiedener Test-Editoren zur Erhöhung der Nutzermotivation, Alt-Texte anzugeben. Diese beinhalten zB auch die Generierung von Alt-Texten durch KI (alttext.ai). Die Ergebnisse wurden <a href="https://github.com/sebastianbroc/P3_Barrierefreiheit_ECommerce/blob/main/dokumentation/Workshop_B_Paper.pdf">in einem Paper</a> im Rahmen des Vertiefungsworkshops B (Wissenschaftliche Verwertung) diskutiert.
 * Keycloak-Integration zur einfachen Anmeldung via GM-ID
 * Frontend-Component-Library zum Austausch von Code für garantiert barrierefreie Komponenten
-* Kollaborativer Live-Editor zur Arbeit mit mehreren Autoren an einer Guideline
 
 Alle Neuerungen und Forschungen aus der P3-Phase sind im <a href="https://github.com/sebastianbroc/P3_Barrierefreiheit_ECommerce/wiki">Wiki dieses Repositorys</a> sowie im entsprechenden Ordner <a href="https://github.com/sebastianbroc/P3_Barrierefreiheit_ECommerce/tree/main/dokumentation">"dokumentation"</a> dokumentiert.
 
