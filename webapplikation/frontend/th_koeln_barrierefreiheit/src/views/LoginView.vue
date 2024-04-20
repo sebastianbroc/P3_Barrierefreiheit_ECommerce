@@ -4,8 +4,7 @@
     <div class="forms">
       <form id="register_form">
         <h1>Registrieren</h1>
-        <label for="register_email">E-Mail</label><br><input type="text" name="email" id="register_email" v-model="register_email"><br>
-        <label for="register_name">Name</label><br><input type="text" name="name" id="register_name" v-model="register_name" >
+        <label for="register_email">GM-ID</label><br><input type="text" name="email" id="register_email" v-model="register_email"><br>
         <label for="register_password">Passwort</label><br><input type="password" name="password" id="register_password" v-model="register_password" >
         <label for="register_password_repeat">Passwort (wiederholen)</label><br><input type="password" name="password_repeat" id="register_password_repeat" v-model="register_password_repeat" >
         <div class="last-line">
@@ -14,8 +13,8 @@
       </form>
       <div class="separator" id="separator"></div>
       <form id="login_form">
-        <h1>Login</h1>
-        <label for="login_email">E-Mail</label><br><input type="text" name="email" id="login_email" v-model="login_email"><br>
+        <h1>Login mit GMID</h1>
+        <label for="login_email">GM-Id</label><br><input type="text" name="email" id="login_email" v-model="login_email"><br>
         <label for="login_password">Passwort</label><br><input type="password" name="password" id="login_password" v-model="login_password">
         <div class="last-line">
           <input type="button" value="Login" @click="login"><p>{{msg}}</p>
@@ -91,7 +90,7 @@ export default {
       return false
     },
     expandForm(){
-        if(this.login_email || this.login_password){
+        if(this.login_email || this.login_password || 1 == 1){
           document.getElementById("login_form").classList.add("active")
           document.getElementById("login_form").classList.remove("passive")
           document.getElementById("register_form").classList.add("passive")
